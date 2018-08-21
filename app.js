@@ -10,6 +10,7 @@ var bodyParser = require("body-parser"),
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
+var port = process.env.PORT || 8080
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
 mongoose.connect(url, { useNewUrlParser: true });
 
@@ -60,7 +61,7 @@ app.get("/campgrounds/:id", function(req, res){
     });
 });
 
-app.listen(3000, function(){
-    console.log("Serving on port 3000");
+app.listen(port, function(){
+    console.log("App is running at http://localhost:" + port);
 });
 
