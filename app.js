@@ -3,10 +3,10 @@ var bodyParser = require("body-parser"),
     express    = require("express"),
     app        = express();
     Campground = require("./models/campground");
-    // seedDB     = require("./seeds");
+    seedDB     = require("./seeds");
 
 
-// seedDB();
+seedDB();
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
