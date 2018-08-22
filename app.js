@@ -14,7 +14,7 @@ app.use(express.static(__dirname + "/public"));
 var port = process.env.PORT || 8080
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";
 mongoose.connect(url, { useNewUrlParser: true });
-seedDB();
+// seedDB();
 
 
 app.get("/", function(req, res){
