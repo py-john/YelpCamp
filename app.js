@@ -1,12 +1,13 @@
-var bodyParser    = require("body-parser"),
-    mongoose      = require("mongoose"),
-    passport      = require("passport"),
-    LocalStrategy = require("passport-local"),
-    express       = require("express"),
-    Campground    = require("./models/campground"),
-    Comment       = require("./models/comment"),
-    User          = require("./models/user"),
-    seedDB        = require("./seeds");
+var bodyParser     = require("body-parser"),
+    mongoose       = require("mongoose"),
+    passport       = require("passport"),
+    LocalStrategy  = require("passport-local"),
+    methodOverride = require("method-override"),
+    express        = require("express"),
+    Campground     = require("./models/campground"),
+    Comment        = require("./models/comment"),
+    User           = require("./models/user"),
+    seedDB         = require("./seeds");
 
 var campgroundRoutes = require("./routes/campgrounds"),
     commentRoutes    = require("./routes/comments"),
@@ -18,6 +19,7 @@ var port = process.env.PORT || 3000
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
 // Mongo
 var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_camp";

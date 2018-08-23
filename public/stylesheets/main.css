@@ -10,3 +10,7 @@
     width: 30%;
     margin: 30px auto;
 }
+
+#delete-form {
+    display: inline;
+}
