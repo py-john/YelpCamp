@@ -11,6 +11,6 @@
     margin: 30px auto;
 }
 
-#delete-form {
+.delete-form {
     display: inline;
 }
