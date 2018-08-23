@@ -18,6 +18,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/campgrounds">Campgrounds</a>
                 </li>
+                <% if(currentUser){ %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/campgrounds/new">Add New Campground</a>
+                    </li>
+                <% } %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% if(!currentUser){ %>
@@ -31,3 +36,16 @@
         </div>
     </div>
 </nav>
+
+<div class="container">
+    <% if(error && error.length > 0){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if(success && success.length > 0){ %>
+        <div class="alert alert-success" role="alert">
+            <%= success %>
+        </div>
+    <% } %>
+</div>

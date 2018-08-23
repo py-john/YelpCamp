@@ -1,7 +1,7 @@
 <% include partials/header %> 
 
 <div class="container text-center">
-    <h1>Sign Up</h1>
+    <h1>Create Account</h1>
 
     <form action="/register" method="POST">
         <div class="form-input">
@@ -11,7 +11,8 @@
             <div class="form-group">
                 <input class="form-control" type="password" name="password" placeholder="password">
             </div>
-            <button class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary btn-block">Submit</button>
+            <small class="form-text">Already have an account? <a href="/login">Sign in</a></small>
         </div>
     </form>
 </div>

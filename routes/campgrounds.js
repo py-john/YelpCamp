@@ -59,6 +59,11 @@ router.get("/:id/edit", middleware.checkCampgroundOwnership,  function(req, res)
 // Update
 router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
     Campground.findByIdAndUpdate(req.params.id, req.body.campground, function(err, updatedCampground){
+        if(err){
+            req.flash("error", "Something went wrong");
+            res.redirect("back");
+        }
+        req.flash("success", "Campground updated");
         res.redirect("/campgrounds/" + req.params.id);
     });
 });
@@ -66,6 +71,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 // Delete
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
+        req.flash("success", "Campground deleted");
         res.redirect("/campgrounds");
     });
 });
