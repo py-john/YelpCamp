@@ -5,3 +5,8 @@
 .thumbnail {
     padding: 0;
 }
+
+.form-input {
+    width: 30%;
+    margin: 30px auto;
+}
