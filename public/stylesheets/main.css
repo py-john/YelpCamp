@@ -1,3 +1,15 @@
+body {
+    font-family: Lato;
+}
+
+.landing-body {
+    background-color: black;
+}
+
+.jumbotron p {
+    font-weight: 300;
+}
+
 .thumbnail img {
     width: 100%;
 }
@@ -7,10 +19,111 @@
 }
 
 .form-input {
+    min-width: 250px;
     width: 30%;
     margin: 30px auto;
 }
 
 .delete-form {
     display: inline;
+}
+
+nav {
+    z-index: 1;
+}
+
+.fa {
+    margin-left: 5px;
+}
+
+.glyphicon {
+    top: 0.2em;
+    margin-left: 3px;
+}
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 30vh;
+}
+
+#landing-header h1 {
+    color: white;
+    font-weight: 700;
+    font-size: 4.2em;
+    text-shadow: 0px 4px 3px rgba(0,0,0,0.4),
+                 0px 8px 13px rgba(0,0,0,0.1),
+                 0px 18px 23px rgba(0,0,0,0.1);
+}
+
+.slideshow { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite; 
+}
+
+/* .slideshow li:nth-child(1) { */ 
+/*   background-image: url(https://images.unsplash.com/photo-1519708495087-ca1b71df408c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cfa82a18a43ac663a816cab80ad57543&auto=format&fit=crop&w=700&q=60) */ 
+/* } */
+.slideshow li:nth-child(1) { 
+    background-image: url(https://images.unsplash.com/photo-1510312305653-8ed496efae75?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b73cd1e1733b1a02b2e5de4bb97fd5b4&auto=format&fit=crop&w=1867&q=80) 
+}
+.slideshow li:nth-child(2) { 
+    background-image: url(http://i.imgur.com/TVGe0Ef.jpg);
+    animation-delay: 10s; 
+}
+.slideshow li:nth-child(3) { 
+    background-image: url(http://i.imgur.com/emvhOnb.jpg);
+    animation-delay: 20s;
+}
+.slideshow li:nth-child(4) { 
+    background-image: url(http://i.imgur.com/K3mPv14.jpg);
+    animation-delay: 30s; 
+}
+.slideshow li:nth-child(5) { 
+    background-image: url(http://i.imgur.com/2LSMCmJ.jpg);
+    animation-delay: 40s; 
+}
+
+@keyframes imageAnimation { 
+    0% {
+        opacity: 0;
+        animation-timing-function: ease-in;
+    }
+    10% {
+        opacity: 1;
+        animation-timing-function: ease-out;
+    }
+    20% {
+        opacity: 1
+    }
+    30% {
+        opacity: 0
+    }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+    opacity: 1;
 }

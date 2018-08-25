@@ -9,7 +9,7 @@ router.get("/", function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render("campgrounds/index", {campgrounds: campgrounds, currentUser: req.user});
+            res.render("campgrounds/index", {campgrounds: campgrounds, currentUser: req.user, page_name: "home"});
         }
     });
 });
@@ -28,14 +28,14 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.redirect("/campgrounds");
+            res.redirect("/campgrounds", {page_name: "home"});
         }
     });
 });
 
 // New
 router.get("/new", middleware.isLoggedIn, function(req, res){
-    res.render("campgrounds/new");
+    res.render("campgrounds/new", {page_name: "new"});
 });
 
 // Show
@@ -72,7 +72,7 @@ router.put("/:id", middleware.checkCampgroundOwnership, function(req, res){
 router.delete("/:id", middleware.checkCampgroundOwnership, function(req, res){
     Campground.findByIdAndRemove(req.params.id, function(err){
         req.flash("success", "Campground deleted");
-        res.redirect("/campgrounds");
+        res.redirect("/campgrounds", {page_name: "home"});
     });
 });
 

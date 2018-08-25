@@ -1,17 +1,18 @@
+// Imports
 var bodyParser     = require("body-parser"),
     express        = require("express"),
     mongoose       = require("mongoose"),
     flash          = require("connect-flash"),
     passport       = require("passport"),
     LocalStrategy  = require("passport-local"),
+    methodOverride = require("method-override");
 
+// Models
+var Campground = require("./models/campground"),
+    Comment    = require("./models/comment"),
+    User       = require("./models/user");
 
-    methodOverride = require("method-override"),
-    Campground     = require("./models/campground"),
-    Comment        = require("./models/comment"),
-    User           = require("./models/user");
-
-// Route vars
+// Routing 
 var campgroundRoutes = require("./routes/campgrounds"),
     commentRoutes    = require("./routes/comments"),
     indexRoutes      = require("./routes/index");

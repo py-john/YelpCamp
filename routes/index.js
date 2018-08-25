@@ -1,16 +1,16 @@
-var express = require("express");
-var router = express.Router();
-var passport = require("passport");
-var User = require("../models/user");
+var express  = require("express"),
+    router   = express.Router(),
+    passport = require("passport"),
+    User     = require("../models/user");
 
 // Root route
 router.get("/", function(req, res){
-    res.render("landing");
+    res.render("landing", {page_name: "landing"});
 });
 
 // Register form
 router.get("/register", function(req, res){
-    res.render("register");
+    res.render("register", {page_name: "register"});
 });
 // Sign up logic
 router.post("/register", function(req, res){
@@ -22,14 +22,14 @@ router.post("/register", function(req, res){
         }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to YelpCamp " + req.body.username + "!");
-            res.redirect("/campgrounds");
+            return res.redirect("/campgrounds");
         });
     });
 });
 
 // Show login form
 router.get("/login", function(req, res){
-    res.render("login");
+    res.render("login", {page_name: "login"});
 });
 
 // Handle login logic

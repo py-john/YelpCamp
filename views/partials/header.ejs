@@ -3,34 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>YelpCamp</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/stylesheets/main.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
-<body>
+<body <% if (page_name === "landing") { %> class="landing-body" <% } %> >
 
 <nav class="nav navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand" href="/">YelpCamp</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/campgrounds">Home</a>
-                </li>
+                <li <% if (page_name === "home") { %> class="active" <% } %> > <a href="/campgrounds">Home</a></li>
                 <% if(currentUser){ %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/campgrounds/new">New Campground</a>
-                    </li>
+                <li <% if (page_name === "new") { %> class="active" <% } %> > <a href="/campgrounds/new">New Campground</a></li>
                 <% } %>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <% if(!currentUser){ %>
-                    <li><a href="/login">Sign In</a></li>
-                    <li><a href="/register">Register</a></li>
+                <% var iconClass = (page_name === "login") ? "fa fa-user" : "fa fa-user-o" %>
+                <li <% if (page_name === "login") { %> class="active" <% } %> > <a href="/login">Sign In <i class="<%= iconClass %>"></i></a></li>
+                    <li <% if (page_name === "register") { %> class="active" <% } %> > <a href="/register">Register <i class="fa fa-user-plus"></i></a></li>
                 <% } else { %>
-                    <li><a href="#">Signed in as <%= currentUser.username %></a></li>
-                    <li><a href="/logout">Log Out</a></li>
+                    <li><a href="#"> <%= currentUser.username %> <i class="fa fa-user-circle-o"></i> </a></li>
+                    <li><a href="/logout">Log Out  <i class="fa fa-sign-out"></i></a></li>
                 <% } %>
             </ul>
         </div>
